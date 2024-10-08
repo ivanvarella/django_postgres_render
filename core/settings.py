@@ -31,7 +31,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 # Alterar para o domínio gerado pelo Render
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["core-ogit.onrender.com"]
+
+CSRF_TRUSTED_ORIGINS = ["https://core-ogit.onrender.com"]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 
 # Application definition
