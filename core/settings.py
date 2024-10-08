@@ -31,13 +31,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 # Alterar para o domínio gerado pelo Render
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = ["core-ogit.onrender.com"]
+ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["core-ogit.onrender.com"]
 
-CSRF_TRUSTED_ORIGINS = ["https://core-ogit.onrender.com"]
+# CSRF_TRUSTED_ORIGINS = ["https://core-ogit.onrender.com"]
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 
 # Application definition
@@ -95,25 +95,25 @@ WSGI_APPLICATION = "core.wsgi.application"
 # }
 
 # Conexão Postgres - RENDER DB (sem variáveis de ambiente)
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "dbname_cl98",
-#         "USER": "postgresadm",
-#         "PASSWORD": "XMK2KIxLSGCrFpyLUtuF4oPZZJwjinTa",
-#         "HOST": "dpg-cs23kre8ii6s739bkjng-a.ohio-postgres.render.com",
-#         "PORT": "5432",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "dbname_cl98",
+        "USER": "postgresadm",
+        "PASSWORD": "XMK2KIxLSGCrFpyLUtuF4oPZZJwjinTa",
+        "HOST": "dpg-cs23kre8ii6s739bkjng-a.ohio-postgres.render.com",
+        "PORT": "5432",
+    }
+}
 
 # Config produção: RENDER DB
-DATABASES = {
-    "default": dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
-    )
-}
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default=os.getenv("DATABASE_URL"),
+#         conn_max_age=600,
+#     )
+# }
 
 
 # Password validation

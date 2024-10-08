@@ -7,6 +7,7 @@ class Member(models.Model):
     # phone = models.IntegerField(null=True)
     phone = models.BigIntegerField(null=True)  # Alterado para BigIntegerField
     joined_date = models.DateField(null=True)
+    slug = models.SlugField(default="", null=False)
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
