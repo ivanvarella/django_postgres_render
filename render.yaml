@@ -1,0 +1,22 @@
+databases:
+  - name: w3-django-project
+    plan: free
+    databaseName: dbname_cl98
+    user: postgresadm
+
+services:
+  - type: web
+    plan: free
+    name: core
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dbname_cl98
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
