@@ -35,6 +35,10 @@ requirements_dev7.txt
 
 tree.txt
 
+productionfiles copy
+
+connectionRender.txt
+
 
 # Distribution / packaging
 .Python

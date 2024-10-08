@@ -31,13 +31,14 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 # Alterar para o domínio gerado pelo Render
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["core-ogit.onrender.com"]
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["core-ogit.onrender.com"]
 
-# CSRF_TRUSTED_ORIGINS = ["https://core-ogit.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://core-ogit.onrender.com"]
+# CSRF_TRUSTED_ORIGINS = ["https://http://127.0.0.1:8000/"]
 
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 
 # Application definition
@@ -95,27 +96,16 @@ WSGI_APPLICATION = "core.wsgi.application"
 #     }
 # }
 
-# Conexão Postgres - RENDER DB (sem variáveis de ambiente)
+# Config produção: RENDER DB
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "dbname_cl98",
-        "USER": "postgresadm",
-        "PASSWORD": "XMK2KIxLSGCrFpyLUtuF4oPZZJwjinTa",
-        "HOST": "dpg-cs23kre8ii6s739bkjng-a.ohio-postgres.render.com",
-        "PORT": "5432",
-    }
+    "default": dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=120000,
+    )
 }
 
-# Config produção: RENDER DB
-# DATABASES = {
-#     "default": dj_database_url.config(
-#         # Replace this value with your local database's connection string.
-#         default=os.getenv("DATABASE_URL"),
-#         conn_max_age=600,
-#     )
-# }
-
+# conn_max_age=600,
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -162,7 +152,7 @@ STATICFILES_DIRS = [BASE_DIR / "mystaticfiles"]
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-else:
-    # Configuração para servir arquivos estáticos em produção
-    STATIC_ROOT = BASE_DIR / "productionfiles"
-    # Depois executar: python3 manage.py collectstatic -> Cria a pasta e o contexto para ser usado + arquivos corretos (css + js)
+# else:
+#     # Configuração para servir arquivos estáticos em produção
+#     STATIC_ROOT = BASE_DIR / "productionfiles"
+#     # Depois executar: python3 manage.py collectstatic -> Cria a pasta e o contexto para ser usado + arquivos corretos (css + js)
