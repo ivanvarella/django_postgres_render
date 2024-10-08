@@ -31,6 +31,9 @@ requirements_dev3.txt
 requirements_dev4_ignore.txt
 requirements_dev5.txt
 requirements_dev6.txt
+requirements_dev7.txt
+
+tree.txt
 
 
 # Distribution / packaging

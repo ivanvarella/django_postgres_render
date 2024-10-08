@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "members",
+    "bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -146,23 +147,22 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "/static/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Configuração para servir arquivos estáticos em produção
-STATIC_ROOT = BASE_DIR / "productionfiles"
-# Depois executar: python3 manage.py collectstatic -> Cria a pasta e o contexto para ser usado + arquivos corretos (css + js)
-
 STATICFILES_DIRS = [BASE_DIR / "mystaticfiles"]
 
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+else:
+    # Configuração para servir arquivos estáticos em produção
+    STATIC_ROOT = BASE_DIR / "productionfiles"
+    # Depois executar: python3 manage.py collectstatic -> Cria a pasta e o contexto para ser usado + arquivos corretos (css + js)

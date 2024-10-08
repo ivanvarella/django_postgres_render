@@ -1,13 +1,20 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" href="{% static 'myglobal.css' %}">
-  <body>
-    <ul>
-      {% for x in mymembers %}
-        <li>{{ x.firstname }}</li>
-      {% endfor %}
-    </ul>
-
-  </body>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Membros</h1>
+        <ul class="list-group">
+            {% for x in mymembers %}
+                <li class="list-group-item">{{ x.firstname }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
 </html>

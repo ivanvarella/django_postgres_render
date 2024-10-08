@@ -5,9 +5,15 @@
 {% endblock %}
 
 {% block content %}
-  <div class="mycard">
-    <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
-    <p>Phone {{ mymember.phone }}</p>
-    <p>Member since: {{ mymember.joined_date }}</p>
+  <div class="card">
+    <div class="card-header">
+      {{ mymember.firstname }} {{ mymember.lastname }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Detalhes do Membro</h5>
+      <p class="card-text">Phone: {{ mymember.phone }}</p>
+      <p class="card-text">Member since: {{ mymember.joined_date }}</p>
+      <a href="/members/" class="btn btn-primary">Voltar para os membros</a>
+    </div>
   </div>
-{% endblock %}  
+{% endblock %}
